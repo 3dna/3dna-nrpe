@@ -14,6 +14,8 @@
 # [*default_commands*]
 #   this enables the default commands that come installed in the config file on ubuntu
 #   they will simply be included as nrpe::command resources, so have at!
+# [*local_config*]
+#   this enables the /etc/nagios/nrpe_local.cfg file for local settings. probably unnecessary, but I like to be complete!
 #
 # === Examples
 #
