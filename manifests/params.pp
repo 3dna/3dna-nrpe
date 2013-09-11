@@ -19,6 +19,7 @@ class nrpe::params {
       $config_file = '/etc/nagios/nrpe.cfg'
       $conf_d_dir = '/etc/nagios/nrpe.d'
       $package_name = 'nagios-nrpe-server'
+      $extra_packages = ['nagios-plugins-basic']
       $service_name = 'nagios-nrpe-server'
       $plugin_path = '/usr/lib/nagios/plugins'
     }
