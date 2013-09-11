@@ -23,11 +23,11 @@
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Jeremy Kitchen <jeremy@nationbuilder.com>
 #
 # === Copyright
 #
-# Copyright 2013 Your name here, unless otherwise noted.
+# Copyright 2013 3dna Corp
 #
 define nrpe::plugin (
   $content   = undef,
