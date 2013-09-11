@@ -49,7 +49,7 @@ class nrpe::config (
   $debug = false,
   $command_timeout = 60,
   $connection_timeout = 300,
-  $allow_weak_random_seed = true,
+  $allow_weak_random_seed = undef,
   $include = undef,
   $includedir = undef,
 
