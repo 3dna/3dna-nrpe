@@ -36,4 +36,5 @@ class nrpe inherits nrpe::params {
   include nrpe::service
 
   Class['nrpe::install'] -> Class['nrpe::config'] ~> Class['nrpe::service']
+  Class['nrpe::install'] -> Nrpe::Command <| |> ~> Class['nrpe::service']
 }
