@@ -11,7 +11,7 @@
 # [*source*]
 #   the source of the plugin
 # [*nrpe_only*]
-#   can only the nrpe user read/write/execute this file? defaults to false
+#   can only the nrpe owner read/write/execute this file? defaults to false
 # [*ensure*]
 #   passed directly through to the file{} resource
 # [*plugin_path*]
@@ -47,12 +47,12 @@ define nrpe::plugin (
 
   case $nrpe_only {
     true: {
-      $user  = $nrpe::params::nrpe_user
+      $owner  = $nrpe::params::nrpe_owner
       $group = $nrpe::params::nrpe_group
       $mode  = 0700
     }
     default: {
-      $user  = undef
+      $owner  = undef
       $group = undef
       $mode  = 0755
     }
@@ -62,7 +62,7 @@ define nrpe::plugin (
     ensure  => $ensure,
     source  => $source,
     content => $content,
-    user    => $user,
+    owner    => $owner,
     group   => $group,
     mode    => $mode,
   }
