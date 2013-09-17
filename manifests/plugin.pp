@@ -54,7 +54,7 @@ define nrpe::plugin (
     default: {
       $user  = undef
       $group = undef
-      $mode  = undef
+      $mode  = 0755
     }
   }
 
