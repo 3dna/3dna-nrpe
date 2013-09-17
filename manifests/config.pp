@@ -67,8 +67,9 @@ class nrpe::config (
   }
 
   file { $conf_d_dir:
-    ensure => directory,
-    purge  => true,
+    ensure  => directory,
+    purge   => true,
+    recurse => true,
   }
 
   if ($default_commands) {
