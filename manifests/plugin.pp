@@ -14,6 +14,8 @@
 #   can only the nrpe user read/write/execute this file? defaults to false
 # [*ensure*]
 #   passed directly through to the file{} resource
+# [*plugin_path*]
+#   specify the directory to place the plugin in
 #
 # === Examples
 #
@@ -30,10 +32,11 @@
 # Copyright 2013 3dna Corp
 #
 define nrpe::plugin (
-  $content   = undef,
-  $source    = undef,
-  $ensure    = undef,
-  $nrpe_only = false,
+  $content     = undef,
+  $source      = undef,
+  $ensure      = undef,
+  $nrpe_only   = false,
+  $plugin_path = $nrpe::params::plugin_path,
 ) {
   include nrpe::params
 
@@ -55,7 +58,7 @@ define nrpe::plugin (
     }
   }
 
-  file { "${nrpe::params::plugin_path}/${name}":
+  file { "${plugin_path}/${name}":
     ensure  => $ensure,
     source  => $source,
     content => $content,
