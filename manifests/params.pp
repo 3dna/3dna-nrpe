@@ -22,6 +22,23 @@ class nrpe::params {
       $extra_packages = ['nagios-plugins']
       $service_name = 'nagios-nrpe-server'
       $plugin_path = '/usr/lib/nagios/plugins'
+
+      case $::operatingsystem {
+        'Ubuntu': {
+          # in 13.04 the check_linux_raid was removed from nagios-plugins-standard,
+          # renamed to check_raid, and moved into nagios-plugins-contrib. le SIGH
+          if ($lsbmajdistrelease >= 13) {
+            $check_raid_plugin = 'check_raid'
+            $check_raid_package = 'nagios-plugins-contrib'
+          } else {
+            $check_raid_plugin = 'check_linux_raid'
+            $check_raid_package = 'nagios-plugins-standard'
+          }
+        }
+        default: {
+          fail ("${::operatingsystem} is not yet supported (check_raid bits, specifically)")
+        }
+      }
     }
     default: {
       fail ("${::osfamily} is not yet supported")
