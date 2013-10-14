@@ -37,4 +37,12 @@ class nrpe inherits nrpe::params {
 
   Class['nrpe::install'] -> Class['nrpe::config'] ~> Class['nrpe::service']
   Class['nrpe::install'] -> Nrpe::Command <| |> ~> Class['nrpe::service']
+
+  anchor {
+    'nrpe::begin':
+      before => [Class['nrpe::install'],Class['nrpe::config']],
+      notify => Class['nrpe::service'];
+    'nrpe::end':
+      require => Class['nrpe::service'];
+  }
 }

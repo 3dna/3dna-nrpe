@@ -9,3 +9,4 @@ project_page 'https://github.com/3dna/3dna-nrpe'
 
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
+dependency 'puppetlabs/stdlib', '>= 4.0.0'
