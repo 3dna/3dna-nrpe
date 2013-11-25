@@ -68,6 +68,7 @@ define nrpe::command::check_disk (
   $inode_critical_percent = undef,
   $inode_percent_used     = false,
   $exact_match            = false,
+  $path                   = $name,
 ) {
   include nrpe::params
 
@@ -114,6 +115,6 @@ define nrpe::command::check_disk (
   }
 
   nrpe::command { "check_disk_${pretty_name}":
-    command => "${check_disk_plugin} ${warning_frag} ${warning_percent_frag} ${critical_frag} ${critical_percent_frag} ${inode_warning_percent_frag} ${inode_critical_percent_frag} ${exact_match_frag} -p ${name}"
+    command => "${check_disk_plugin} ${warning_frag} ${warning_percent_frag} ${critical_frag} ${critical_percent_frag} ${inode_warning_percent_frag} ${inode_critical_percent_frag} ${exact_match_frag} -p ${path}"
   }
 }
