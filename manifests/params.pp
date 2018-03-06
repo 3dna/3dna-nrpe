@@ -22,12 +22,14 @@ class nrpe::params {
       $extra_packages = ['nagios-plugins']
       $service_name = 'nagios-nrpe-server'
       $plugin_path = '/usr/lib/nagios/plugins'
+      $_lsbdistrelease_int = scanf("${::lsbdistrelease}", "%i")
+      $_dist_release = $_lsbdistrelease_int[0]
 
       case $::operatingsystem {
         'Ubuntu': {
           # in 13.04 the check_linux_raid was removed from nagios-plugins-standard,
           # renamed to check_raid, and moved into nagios-plugins-contrib. le SIGH
-          if ($lsbmajdistrelease >= 13) {
+          if ($_dist_release >= 13) {
             $check_raid_plugin = 'check_raid'
             $check_raid_package = 'nagios-plugins-contrib'
           } else {

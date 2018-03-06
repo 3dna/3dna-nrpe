@@ -1,5 +1,5 @@
 name    '3dna-nrpe'
-version '0.0.1'
+version '0.0.2'
 source 'git://github.com/3dna/3dna-nrpe'
 author '3dna Corp'
 license 'Apache License, Version 2.0'
