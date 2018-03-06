@@ -49,12 +49,12 @@ define nrpe::plugin (
     true: {
       $owner  = $nrpe::params::nrpe_owner
       $group = $nrpe::params::nrpe_group
-      $mode  = 0700
+      $mode  = '0700'
     }
     default: {
       $owner  = undef
       $group = undef
-      $mode  = 0755
+      $mode  = '0755'
     }
   }
 
