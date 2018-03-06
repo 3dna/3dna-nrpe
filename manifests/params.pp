@@ -22,7 +22,8 @@ class nrpe::params {
       $extra_packages = ['nagios-plugins']
       $service_name = 'nagios-nrpe-server'
       $plugin_path = '/usr/lib/nagios/plugins'
-      $_dist_release = scanf("${::lsbdistrelease}", "%i")
+      $_lsbdistrelease_int = scanf("${::lsbdistrelease}", "%i")
+      $_dist_release = $_lsbdistrelease_int[0]
 
       case $::operatingsystem {
         'Ubuntu': {
